@@ -62,13 +62,13 @@ Deployment
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home](screenshots/home.png)
+![Home](screenshot/home.png)
 
 ###  📅 Book Table
-![Book table](screenshots/bookingview.png)
+![Book table](screenshot/bookingview.png)
 
 ### 📅 Booking Page
-![Booking](screenshots/booktable.png)
+![Booking](screenshot/booktable.png)
 
 ### ⚙️ Admin Dashboard
-![Admin](screenshots/admindashboard.png)
+![Admin](screenshot/admindashboard.png)
