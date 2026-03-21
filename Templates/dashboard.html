@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Padmini</h2>
+    <a href="{% url 'dashboard' %}">Home</a>
+    <a href="{% url 'itemcategory' %}">Item Category</a>
+    <a href="{% url 'allitems' %}">Items</a>
+    <a href="{% url 'feedbackview' %}">Feedback</a>
+    <a href="{% url 'booking' %}">Booking  {% if pending_count > 0 %}
+        <span style="background:red; color:white; padding:4px 8px; border-radius:50%; font-size:12px;">
+            {{ pending_count }}
+        </span>
+    {% endif %}</a>
+    <a href="{% url 'aboutus' %}">About us</a>
+</div>
+
+<!-- Topbar -->
+<div class="topbar">
+    <div class="profile">
+        <img src="{{ request.user.profile.image.url }}" width="50" height="50" style="border-radius:50%;">
+        <span onclick="toggleMenu()">
+        {{ request.user.username }} ⬇
+        </span>
+        <div class="dropdown" id="menu">
+            <a href="{% url 'admin-profile' %}">Profile</a>
+            
+
+            <form action="{% url 'admin_logout' %}" method="post" style="margin:0;">
+                {% csrf_token %}
+                <button style="width:100%; padding:10px; border:none; background:red; text-align:left;" >
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="content">
+    {% block content %}
+    <center><h1>Admin Dashboard</h1>
+    <h2>Welcome {{ request.user.username }}</h2>
+    {% endblock %}
+</div>
+<script>
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+// 🔥 NEW: Close when clicking outside
+document.addEventListener("click", function(event) {
+    var profile = document.querySelector(".profile");
+    var menu = document.getElementById("menu");
+
+    // if click is NOT inside profile
+    if (!profile.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>

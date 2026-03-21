@@ -1,0 +1,32 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<center>
+<h2>Are you sure?</h2>
+
+<p>
+    Do you really want to 
+    <strong>{{ status }}</strong> 
+    this booking?
+<p><b>Name:</b> {{ booking.Name }}</p>
+
+<p><b>Items:</b> 
+    {% for item in booking.items.all %}
+        {{ item.Item_name }}<br>
+    {% empty %}
+        No Items
+    {% endfor %}
+</p>
+
+<div class="confirm">
+
+<form method="post" action="{% url 'confirm-update' booking.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="status" value="{{ status }}">
+    <button type="submit" class="btn btn-outline-primary" >Confirm</button>
+</form>
+
+<a href="{% url 'dashboard' %}" class="btn btn-outline-warning">Cancel</a>
+{% endblock %}
+</div> 
+</center> 

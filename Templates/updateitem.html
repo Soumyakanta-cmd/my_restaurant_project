@@ -1,0 +1,10 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<h2>Update Item</h2>
+<form method="post" enctype="multipart/form-data">
+    {{ form.as_p }}
+    {% csrf_token %}
+    
+    <input type="submit" class="btn btn-success" value="update">
+</form>
+{% endblock %}

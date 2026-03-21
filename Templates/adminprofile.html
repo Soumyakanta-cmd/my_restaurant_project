@@ -1,0 +1,14 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<h2>Admin Profile</h2>
+
+<img src="{{ request.user.profile.image.url }}" width="150" height="150" style="border-radius:50%;">
+
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+
+<a href="{% url 'edit-profile' %}">
+    <button class="btn btn-info">Edit Profile</button>
+</a>
+{% endblock %}

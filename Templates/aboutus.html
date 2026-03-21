@@ -1,0 +1,9 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<h2>About us</h2>
+{% for ab in about%}
+    <ul>{{ab.Description}}</ul>
+
+<a href="{% url 'editabout' ab.id %}" class="btn btn-outline-warning">Edit</a>
+{% endfor %}
+{% endblock %}

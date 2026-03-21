@@ -1,0 +1,46 @@
+{% extends "dashboard.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>Edit Profile</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Username:</label><br>
+    <input type="text" name="username" value="{{ request.user.username }}"style="width: 250px; "><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" value="{{ request.user.email }}" style="width: 250px; "><br><br>
+
+   <label>Password:</label><br>
+
+    <div style="position: relative; width: 250px;">
+        <input type="password" id="password" name="password"
+            style="width: 250px; padding-right: 40px;">
+            <img src="{% static 'images/view.png' %}" 
+            onclick="togglePassword()"
+            style="width:18px; height:18px; position:absolute; right:8px; top:6px; cursor:pointer;">
+    </div>
+    <br><br>
+    
+
+    <label>Profile Image:</label><br>
+    <input type="file" name="image"><br><br>
+
+    <button type="submit" class="btn btn-warning">Save</button>
+</form>
+
+<script>
+    function togglePassword() {
+    const passwordField = document.getElementById("password");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+</script>
+{% endblock %}

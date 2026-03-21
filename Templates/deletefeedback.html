@@ -1,0 +1,16 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<center>
+    <h2>Delete Feedback</h2>
+    <p>Are you sure you want to delete:
+    <h3>{{ feedback.User_name }}</h3> feedback</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background:red; color:white;">
+        Yes, Delete
+        </button>
+    </form>
+    <br>
+    <a href="{% url 'feedbackview' %}">Cancel</a>
+</center>
+{% endblock %}

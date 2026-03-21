@@ -1,0 +1,53 @@
+   
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, white, #007BFF);
+    
+    
+}
+
+.navbar{
+    background-color:#007BFF;
+    color:white;
+    padding:15px;
+    font-size:20px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 32px;
+    display:inline;
+    
+}
+
+.content{
+    padding:30px;
+}
+
+.container1{
+    background:transparent;
+    padding:30px;
+    border-radius:5px;
+    border:2px solid white;
+    text-align:center;
+    margin-top:200px;
+    width:250px;
+    height:350px;
+    
+}
+button{
+    padding:8px 15px;
+}
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.confirm{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.confirm button{
+    margin:40px;
+}

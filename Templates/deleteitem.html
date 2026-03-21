@@ -1,0 +1,16 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<center>
+    <h2>Delete Item</h2>
+    <p>Are you sure you want to delete:</p>
+    <h3>{{ item.Item_name }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background:red; color:white;">
+        Yes, Delete
+        </button>
+    </form>
+    <br>
+    <a href="{% url 'allitems' %}">Cancel</a>
+</center>
+{% endblock %}
