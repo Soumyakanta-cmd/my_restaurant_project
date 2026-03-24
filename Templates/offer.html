@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block class %}class="sub_page"{% endblock class %}
+
+{% block menu_status %}active{% endblock menu_status %}
+
+{% load static %}
+
+
+
+{% block main %}
+<section class="offer_section layout_padding">
+  <div class="container">
+    {% if offer %}
+
+    <!-- Heading -->
+    <div class="heading_container heading_center">
+        <h2>🌟 Exclusive Offers from Padmini</h2>
+        <p>Delicious food at unbeatable prices</p>
+    </div>
+
+    <div class="row">
+      {% for i in offer %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        
+        <div class="offer-box">
+
+          <!-- Image -->
+          <div class="img-box">
+            {% if i.Image %}
+              <img src="{{ i.Image.url }}" alt="">
+            {% else %}
+              <img src="{{ i.Item_name.Image.url }}" alt="">
+            {% endif %}
+
+            <span class="discount-badge">
+              {{ i.discount }}% OFF
+            </span>
+          </div>
+
+          <!-- Details -->
+          <div class="detail-box">
+            <h4>{{ i.Item_name.Item_name }}</h4>
+
+            {% comment %} <h3>
+              {{ i.Item_name.description }}
+            </h3> {% endcomment %}
+
+            <!-- Price Calculation -->
+            <div class="price-box">
+              <span class="old-price">
+                ₹{{ i.Item_name.price }}
+              </span>
+
+              <span class="new-price">
+                ₹{{ i.Item_name.price|floatformat:2|add:"-0"|floatformat }}
+              </span>
+            </div>
+
+            <a href="#" class="btn btn-primary w-100 mt-2">
+              Order Now
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+      {% endfor %}
+    {% else %}
+    <center><h4> sorry No offer available</h4></center>
+    {% endif %}
+    </div>
+
+  </div>
+</section>
+{% endblock main %}

@@ -1,0 +1,166 @@
+.heading_container {
+  margin-bottom: 40px;
+}
+
+.heading_container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00973c;
+  position: relative;
+  display: inline-block;
+}
+.offer_section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.heading_container h2::after {
+  content: "";
+  width: 60%;
+  height: 3px;
+  background: #ff5722;
+  position: absolute;
+  left: 20%;
+  bottom: -8px;
+  border-radius: 5px;
+}
+
+.heading_container p {
+  color: #777;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+
+/* =========================
+   OFFER CARD BOX
+========================= */
+.offer-box {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.offer-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   IMAGE SECTION
+========================= */
+.img-box {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.offer-box:hover .img-box img {
+  transform: scale(1.1);
+}
+
+
+/* =========================
+   DISCOUNT BADGE
+========================= */
+.discount-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(45deg, #ff5722, #ff9800);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+
+/* =========================
+   DETAILS SECTION
+========================= */
+.detail-box {
+  padding: 18px;
+  text-align: center;
+}
+
+.detail-box h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #97e200;
+}
+
+/* .detail-box h3 {
+  font-size: 14px;
+  color: #2c0897;
+  height: 40px;
+  overflow: hidden;
+} */
+
+
+/* =========================
+   PRICE SECTION
+========================= */
+.price-box {
+  margin-top: 12px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #aaa;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.new-price {
+  font-weight: bold;
+  color: #ff5722;
+  font-size: 20px;
+}
+
+
+/* =========================
+   BUTTON STYLE
+========================= */
+.offer-box .btn {
+  background: linear-gradient(45deg, #ff5722, #ff9800);
+  border: none;
+  border-radius: 30px;
+  padding: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.offer-box .btn:hover {
+  background: linear-gradient(45deg, #e64a19, #f57c00);
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .heading_container h2 {
+    font-size: 26px;
+  }
+
+  .img-box {
+    height: 180px;
+  }
+}

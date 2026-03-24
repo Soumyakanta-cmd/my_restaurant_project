@@ -1,0 +1,40 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+
+<div class="container mt-5" style="background:#f5f5f5;">
+
+    <div class="card shadow p-4">
+        <h3 class="mb-3">Add New Offer</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label>Item</label>
+                <select name="item" class="form-control">
+                    <option value="" disabled selected>-- Select Item --</option>
+                    {% for i in items %}
+                    <option value="{{ i.id }}">{{ i.Item_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Discount (%)</label>
+                <input type="number" name="discount" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Save Offer
+            </button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+

@@ -30,6 +30,7 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/offer.css' %}" rel="stylesheet" />
 
 </head>
 
@@ -70,6 +71,9 @@
               </li>
               <li class="nav-item {% block feedback_status %}{% endblock feedback_status %}">
                 <a class="nav-link" href="{% url "feedback" %}">Feedback</a>
+              </li>
+              <li class="nav-item {% block offer_status %}{% endblock offer_status %}">
+                <a class="nav-link" href="{% url "offer" %}">Offer</a>
               </li>
             </ul>
             <div class="user_option">

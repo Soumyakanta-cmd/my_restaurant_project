@@ -5,7 +5,10 @@ admin.site.register(ItemList)
 admin.site.register(Items)
 admin.site.register(AboutUs)
 admin.site.register(FeedBack)
-@admin.register(BookTable)
+admin.register(BookTable)
+admin.register(Profile)
+admin.register(Offer)
+
 class BookTableAdmin(admin.ModelAdmin):
     list_display = ['Name', 'booking_date', 'status' ]
     list_filter = ['status']

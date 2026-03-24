@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
-from base_app.models import ItemList, Items, AboutUs, FeedBack, BookTable
+from base_app.models import ItemList, Items, AboutUs, FeedBack, BookTable,Offer
 
 def HomeView(request):
     items = Items.objects.all()
@@ -16,6 +16,10 @@ def MenuView(request):
     items = Items.objects.all()
     list = ItemList.objects.all()
     return render(request,'menu.html',{'items': items, 'list': list})
+
+def OfferView(request):
+    offer=Offer.objects.all()
+    return render(request,'offer.html',{'offer':offer})
 
 from django.contrib import messages
 def BookTableView(request):
@@ -299,6 +303,7 @@ def aboutus(request):
     about=AboutUs.objects.all()
     return render(request,'aboutus.html',{'about':about})
 
+@staff_member_required(login_url='admin_login')
 def editaboutus(request,id):
     about=AboutUs.objects.get(id=id)
     form=EditAbout(instance=about)
@@ -308,4 +313,48 @@ def editaboutus(request,id):
             form.save()
             return redirect('aboutus')
     return render(request,'editaboutus.html',{'form':form})
+
+@staff_member_required(login_url='admin_login')
+def addaboutus(request):
+    form=EditAbout()
+    if request.method == 'POST':
+        form=EditAbout(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('aboutus')
+    return render(request,'editaboutus.html',{'form':form})
+
+@staff_member_required(login_url='admin_login')
+def offerus(request):
+    offer=Offer.objects.all()
+    return render(request,'offerus.html',{'offer':offer})
+
+@staff_member_required(login_url='admin_login')
+def addoffer(request):
+    items = Items.objects.all()
+
+    if request.method == "POST":
+        item_id = request.POST.get('item')
+        discount = request.POST.get('discount')
+        image = request.FILES.get('image')
+
+        item = Items.objects.get(id=item_id)
+
+        Offer.objects.create(
+            Item_name=item,
+            discount=discount,
+            Image=image
+        )
+
+        return redirect('offerus')
+
+    return render(request, 'addoffer.html', {'items': items})
+@staff_member_required(login_url='admin_login')
+def deleteoffer(request,id):
+    offer=Offer.objects.get(id=id)
+    if request.method == 'POST':
+        offer.delete()
+        return redirect('offerus')
+    return render(request,'deleteoffer.html',{'offer':offer})
+
 

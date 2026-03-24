@@ -10,6 +10,7 @@ urlpatterns=[
     path('',HomeView,name="Home"),
     path('book_table',BookTableView,name="Book_Table"),
     path('menu',MenuView,name="Menu"),
+    path('offer',OfferView,name="offer"),
     path('about',AboutView,name="About"),
     path('feedback',feedback,name="feedback"),
     path('admin/',AdminLoginView, name='admin_login'),
@@ -31,7 +32,11 @@ urlpatterns=[
     path('feedbackdelete/<int:id>/', deletefeedback, name='feedbackdelete'),
     path('aboutus/', aboutus, name='aboutus'),
     path('editaboutus/<int:id>', editaboutus, name='editabout'),
-]
+    path('addaboutus/', addaboutus, name='addabout'),
+    path('offerus/', offerus, name='offerus'),
+    path('addoffer/', addoffer, name='addoffer'),
+    path('deleteoffer/<int:id>', deleteoffer, name='deleteoffer'),
+]   
 if settings.DEBUG:
     urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

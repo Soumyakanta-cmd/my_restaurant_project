@@ -62,4 +62,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+class Offer(models.Model):
+    Item_name = models.ForeignKey(Items,related_name='Name',on_delete=models.CASCADE)
+    discount=models.IntegerField()
+    Image=models.ImageField(upload_to='items/', null=True, blank=True)
+
+    def __str__(self):
+        return self.Item_name
 
