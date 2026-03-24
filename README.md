@@ -62,13 +62,13 @@ Deployment
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home](screenshot/home.png)
+![Home](https://raw.githubusercontent.com/Soumyakanta-cmd/my_restaurant_project/main/screenshot/home.png)
 
 ###  📅 Book Table
-![Book table](screenshot/bookingview.png)
+![Book table](https://raw.githubusercontent.com/Soumyakanta-cmd/my_restaurant_project/main/screenshot/bookingview.png)
 
 ### 📅 Booking Page
-![Booking](screenshot/booktable.png)
+![Booking](https://raw.githubusercontent.com/Soumyakanta-cmd/my_restaurant_project/main/screenshot/booktable.png)
 
 ### ⚙️ Admin Dashboard
-![Admin](screenshot/admindashboard.png)
+![Admin]([screenshot/admindashboard.png](https://raw.githubusercontent.com/Soumyakanta-cmd/my_restaurant_project/main/screenshot/admindashboard.png))
