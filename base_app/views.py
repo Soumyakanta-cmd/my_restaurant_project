@@ -66,6 +66,12 @@ def feedback(request):
         return redirect('feedback')
     return render(request, 'feedback.html')
 
+import random
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+def generate_otp():
+    return str(random.randint(100000,999999))
+
 #admin panel starts here
 from django.contrib.auth import authenticate,login,logout
 def AdminLoginView(request):
@@ -76,12 +82,44 @@ def AdminLoginView(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None and user.is_staff:
-            login(request, user)
-            return redirect('dashboard')
+            otp=generate_otp()
+            request.session['otp']=otp
+            request.session['temp_user']=user.id
+
+            send_mail(
+                'your otp code',
+                f'your OTP is {otp}',
+                'patisoumyakanta3210@gmail.com',
+                [user.email],
+                fail_silently=False,
+            )
+
+            return redirect('verify_otp')
         else:
+            messages.error(request,'Invalid user name and password')
             return redirect('admin_login')
         
     return render(request, 'login.html')
+
+def verifyotp(request):
+    if request.method =='POST':
+        entered_otp = request.POST['otp']
+        saved_otp=request.session.get('otp')
+        if entered_otp == saved_otp:
+            user_id=request.session.get('temp_user')
+            user=User.objects.get(id=user_id)
+
+            login(request,user)
+
+            request.session.pop('otp',None)
+            request.session.pop('temp_user',None)
+
+            return redirect('dashboard')
+        else:
+            messages.error(request,'Invalid otp')
+            return redirect('verify_otp')
+        
+    return render(request,'verifyotp.html')
 
 from django.contrib.admin.views.decorators import staff_member_required
 @staff_member_required(login_url='admin_login')

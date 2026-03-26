@@ -14,6 +14,7 @@ urlpatterns=[
     path('about',AboutView,name="About"),
     path('feedback',feedback,name="feedback"),
     path('admin/',AdminLoginView, name='admin_login'),
+    path('verifyotp/',verifyotp, name='verify_otp'),
     path('dashboard/', dashboard, name='dashboard'),
     path('admin-logout/', AdminLogoutView, name='admin_logout'),
     path('confirm-update/<int:id>/', confirm_update, name='confirm-update'),

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>otp</title>
+    <link rel="stylesheet" href="{% static 'css/otp.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Verify otp</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="otp" placeholder="Enter otp" required>
+            <button type="Submit">Verify otp</button>
+        </form>
+        <center>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:red;">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        </center>
+    </div>
+    
+   
+    
+</body>
+</html>

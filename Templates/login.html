@@ -1,6 +1,14 @@
 {% extends "admin/base_site.html" %}
 
 {% block content %}
+<center>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
+</center>
+
 <div class="container">
     <div class="container1">
         <h2>Admin Login</h2>
