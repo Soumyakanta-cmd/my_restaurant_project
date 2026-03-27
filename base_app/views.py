@@ -277,15 +277,16 @@ def editadminprofile(request):
         
         user.username = username
         user.email = email
-        user.password = password
-        user.save()
 
+        if password and password.strip():
+            user.set_password = password
+        user.save()
         
         if image:
-            user.profile.image = image
-            user.profile.save()
+            profile.image = image
+            profile.save()
 
-        return redirect('admin-profile')
+        return redirect('admin_login')
 
     return render(request, 'editadminprofile.html')
 
