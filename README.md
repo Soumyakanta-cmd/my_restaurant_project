@@ -30,7 +30,7 @@ my_restaurant/
 │── manage.py
 │── db.sqlite3
 │── my_restaurant/ # main project
-│── base_app/ # your app
+│── base_app/ # my app
 │── templates/
 │── static/
 │── media/
